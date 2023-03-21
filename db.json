@@ -1,0 +1,55 @@
+{
+  "user": [
+    {
+      "name": "Vipin",
+      "email": "vipin@gmail.com",
+      "password": "admin",
+      "id": 1
+    },
+    {
+      "name": "sanya",
+      "email": "sanya@gmail.com",
+      "password": "admin",
+      "id": 2
+    },
+    {
+      "name": "shubham",
+      "email": "shubham@gmail.com",
+      "password": "admin",
+      "id": 3
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Meeting",
+      "userId": 1,
+      "description": "Meeting with Elon Musk",
+      "duedate": "2023-03-16T15:34",
+      "id": 1
+    },
+    {
+      "title": "Pay Bill",
+      "userId": 1,
+      "modifiedOn": "Thu Mar 16 2023 11:19:45 GMT+0530 (India Standard Time)",
+      "description": "Electricity Bill",
+      "duedate": "2023-03-31T16:19",
+      "id": 2
+    },
+    {
+      "title": "Meeting",
+      "userId": 1,
+      "modifiedOn": "Thu Mar 16 2023 11:25:26 GMT+0530 (India Standard Time)",
+      "description": "Meeting with Bill Gates",
+      "duedate": "2023-03-24T15:29",
+      "id": 3
+    },
+    {
+      "title": "Attend Meeting",
+      "userId": 1,
+      "modifiedOn": "Mon Mar 20 2023 10:31:08 GMT+0530 (India Standard Time)",
+      "description": "Attend Meeting at Taj",
+      "duedate": "2023-03-23T14:45",
+      "id": 4
+    }
+  ]
+}
