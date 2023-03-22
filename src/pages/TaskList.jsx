@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Popup from '../components/Popup';
 import TodoContext from '../context/TodoContext';
 import { dateFormat } from '../helper';
 
@@ -32,18 +33,26 @@ function TaskList(props) {
                                         <td>{item.description}</td>
                                         <td>{dateFormat(item.duedate)}</td>
                                         <td>
-                                            <span className='px-2'>
+                                            <span className='px-2' data-bs-toggle="modal" data-bs-target="#task-modal">
                                                 <i class="fa-solid fa-eye"></i>
+                                            </span>
+
+                                            <span className='px-2' data-bs-toggle="modal" data-bs-target="#task-modal">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </span>
+
+                                            <span className='px-2' data-bs-toggle="modal" data-bs-target="#task-modal">
+                                                <i class="fa-solid fa-trash-can"></i>
                                             </span>
                                         </td>
                                     </tr>
                                 )
                             })
                         }
-              
-                    Hello
+                    </tbody>
                 </table>
             </div>
+            <Popup />
         </div>
     );
 }

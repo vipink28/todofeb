@@ -27,12 +27,12 @@ function CreateTask(props) {
                             <button className='btn btn-info ms-auto' onClick={editTask}>Edit Task</button>
                         </div>
                         <div className='card-body'>
-                            <h5 className='card-title'>{latestTask.title}</h5>
-                            <p>{latestTask.description}</p>
+                            <h5 className='card-title'>{latestTask?.title}</h5>
+                            <p>{latestTask?.description}</p>
                         </div>
                         <div className="card-footer d-flex">
                             <p>Modified On: {dateFormat(latestTask?.modifiedOn)}</p>
-                            <p className='ms-auto'>Due On: {dateFormat(latestTask.duedate)}</p>
+                            <p className='ms-auto'>Due On: {dateFormat(latestTask?.duedate)}</p>
                         </div>
                    </div>
 
