@@ -129,6 +129,14 @@ export const TodoProvider = ({ children }) => {
     }
   };
 
+  const deleteTask = (id)=>{
+    const response = fetch(`http://localhost:5000/tasks/${id}`, {method: "DELETE"});
+    if(response.ok){
+      setMessage("Task deleted successfully");
+    }else{
+      setMessage("Something went wrong");
+    }
+  }
 
 
 
@@ -154,7 +162,8 @@ export const TodoProvider = ({ children }) => {
         recentTask,
         latestTask,
         taskList,
-        updateTask
+        updateTask,
+        deleteTask
       }}
     >
       {children}

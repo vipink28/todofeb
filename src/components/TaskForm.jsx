@@ -9,7 +9,7 @@ function TaskForm(props) {
   }
     const [formData, setFormData] = useState(init);
     const { userData, createTask, message, updateTask } = useContext(TodoContext); 
-    const { data, isUpdate, cancelTask } = props;
+    const { data, isUpdate, cancelTask, closeModal, fromModal } = props;
 
     const handleChange = (e) =>{
         const { name, value } = e.target;
@@ -34,8 +34,11 @@ function TaskForm(props) {
 
    const onCancel = (e)=>{
       e.preventDefault();
-      cancelTask();
+      if(!fromModal){
+        cancelTask();
+      }      
       setFormData(init);
+      closeModal();
     }
 
 
@@ -46,7 +49,7 @@ function TaskForm(props) {
     }, [data, isUpdate])
 
   return (
-    <div className="p-5 w-75">
+    <div className="p-5">
       <h2 className="text-white fw-bold">{isUpdate ? "Update Task": "Create Task"}</h2>
       <div className="p-4 bg-white">
         <form>
