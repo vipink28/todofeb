@@ -5,7 +5,7 @@ import TaskForm from "./TaskForm";
 
 function Popup(props) {
 
-  const { type, data } = props;
+  const { type, data, cancelTask } = props;
   const { message, deleteTask }=useContext(TodoContext);
 
   // console.log({type, data})
@@ -48,11 +48,12 @@ function Popup(props) {
               </div>
                 : type === "edit" ?
               <div className="p-3">
-                  <TaskForm closeModal={closeModal} isUpdate="true" data={data} fromModal="true"/>
+                  <TaskForm closeModal={closeModal} isUpdate="true" data={data} cancelTask={cancelTask}/>
               </div>
               :
               <div className="p-3 text-white">
-                <p>Are you sure, you want to delete this task ?</p>
+                {message !== "" ? <p>{message}</p> : <p>Are you sure, you want to delete this task ?</p>}
+                
                 <button className="btn btn-danger" onClick={onDelete}>Yes</button>
                 <button type="button" className="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
               </div>

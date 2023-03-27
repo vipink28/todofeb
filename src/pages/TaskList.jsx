@@ -19,12 +19,17 @@ const init = {
 function TaskList(props) {
     const { taskList } = useContext(TodoContext);
     const [state, dispatch] = useReducer(reducer, init);
+
+    const cancelTask = ()=>{
+        dispatch({type: 'edit', payload: ""})
+    }
+
     return (
         <div className='container'>
             <div className="bg-primary text-white p-5">
                 <div className="d-flex">
                     <h5>Task List</h5>
-                    <Link className="btn btn-info ms-auto">Create Task</Link>
+                    <Link className="btn btn-info ms-auto" to="/create-task">Create Task</Link>
                 </div>
                 <table className='table table-dark table-striped'>
                     <thead>
@@ -65,7 +70,7 @@ function TaskList(props) {
                     </tbody>
                 </table>
             </div>
-            <Popup type={state.type} data={state.data}/>
+            <Popup type={state.type} data={state.data} cancelTask={cancelTask}/>
         </div>
     );
 }

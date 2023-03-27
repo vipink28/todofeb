@@ -37,6 +37,9 @@ export const TodoProvider = ({ children }) => {
         const user = await response.json();
         console.log(user);
         setMessage("user created successfully");
+        setTimeout(()=>{
+          setMessage("");
+         }, 3000);
         const userData = JSON.stringify(user);
         localStorage.setItem("user", userData);
         setUserData({ name: user.name });
@@ -55,6 +58,9 @@ export const TodoProvider = ({ children }) => {
     const user = await response.json();
     if (user.length > 0) {
       setMessage("logged in successfully");
+      setTimeout(()=>{
+        setMessage("");
+       }, 3000);   
       const userData = JSON.stringify(user[0]);
       localStorage.setItem("user", userData);
       setUserData({ name: user[0].name, id: user[0].id });
@@ -86,6 +92,9 @@ export const TodoProvider = ({ children }) => {
     const response = await fetch("http://localhost:5000/tasks", obj);
     if (response.ok) {
       setMessage("Task created successfully");
+      setTimeout(()=>{
+        setMessage("");
+       }, 3000);   
       getTaskList();
     } else {
       setMessage("something went wrong");
@@ -106,6 +115,9 @@ export const TodoProvider = ({ children }) => {
     const response = await fetch(`http://localhost:5000/tasks/${formData.id}`, obj);
     if (response.ok) {
       setMessage("Task Updated successfully");
+      setTimeout(()=>{
+        setMessage("");
+       }, 3000);   
       getTaskList();
     } else {
       setMessage("something went wrong");
@@ -129,10 +141,14 @@ export const TodoProvider = ({ children }) => {
     }
   };
 
-  const deleteTask = (id)=>{
-    const response = fetch(`http://localhost:5000/tasks/${id}`, {method: "DELETE"});
+  const deleteTask = async(id)=>{
+    const response = await fetch(`http://localhost:5000/tasks/${id}`, {method: "DELETE"});
     if(response.ok){
       setMessage("Task deleted successfully");
+      setTimeout(()=>{
+       setMessage("");
+      }, 3000);      
+      getTaskList();
     }else{
       setMessage("Something went wrong");
     }
