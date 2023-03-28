@@ -17,12 +17,6 @@
       "email": "shubham@gmail.com",
       "password": "admin",
       "id": 3
-    },
-    {
-      "name": "abc",
-      "email": "abc@gmail.com",
-      "password": "admin",
-      "id": 4
     }
   ],
   "tasks": [
