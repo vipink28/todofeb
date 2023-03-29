@@ -3,7 +3,7 @@ import TodoContext from "../context/TodoContext";
 function Login(props) {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const { message, onLogin, setMessage } = useContext(TodoContext);
   const inputField = useRef(null);
@@ -43,7 +43,6 @@ function Login(props) {
     }
 
     setErrors(errorsData);
-
   };
 
   useEffect(validate, [formData]);
@@ -107,7 +106,9 @@ function Login(props) {
           onBlur={onblurHandle}
           ref={inputField}
         />
-        <div className="text-danger">{dirty["email"]&&errors["email"][0]?errors["email"]:""}</div>
+        <div className="text-danger">
+          {dirty["email"] && errors["email"][0] ? errors["email"] : ""}
+        </div>
       </div>
 
       <div className="mb-3">
@@ -120,7 +121,9 @@ function Login(props) {
           onBlur={onblurHandle}
           ref={inputField}
         />
-        <div className="text-danger">{dirty["password"]&&errors["password"][0]?errors["password"]:""}</div>
+        <div className="text-danger">
+          {dirty["password"] && errors["password"][0] ? errors["password"] : ""}
+        </div>
       </div>
       <p>{message}</p>
       <button className="btn btn-primary" onClick={onSubmit}>

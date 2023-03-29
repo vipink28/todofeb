@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Popup from '../components/Popup';
 import TodoContext from '../context/TodoContext';
@@ -19,9 +19,18 @@ const init = {
 function TaskList(props) {
     const { taskList } = useContext(TodoContext);
     const [state, dispatch] = useReducer(reducer, init);
+    const [search, setSearch] = useState("");
+
+    const filteredTasks = taskList.filter(
+        (task) => task.title.toLowerCase().indexOf(search.toLowerCase()) >= 0
+    );
 
     const cancelTask = ()=>{
         dispatch({type: 'edit', payload: ""})
+    }
+    const handleChange = (event)=>{
+        let text = event.target.value;
+        setSearch(text);
     }
 
     return (
@@ -31,6 +40,9 @@ function TaskList(props) {
                     <h5>Task List</h5>
                     <Link className="btn btn-info ms-auto" to="/create-task">Create Task</Link>
                 </div>
+
+                <input type="text" placeholder='search' className='form-control my-3' onChange={handleChange}/>
+
                 <table className='table table-dark table-striped'>
                     <thead>
                         <tr>
@@ -43,7 +55,7 @@ function TaskList(props) {
                     </thead>
                     <tbody>
                         {
-                            taskList.map((item)=>{
+                            filteredTasks.map((item)=>{
                                 return (
                                     <tr key={item.id}>
                                         <td>{item.id}</td>
